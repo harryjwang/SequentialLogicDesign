@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity logic_processor is
+port(
+	logic_in0, logic_in1 : in std_logic_vector(3 downto 0);
+	logic_select										 : in std_logic_vector( 1 downto 0);
+	hex_out											 : out std_logic_vector(3 downto 0) -- The hex output
+);
+
+end logic_processor;
+
+architecture mux_logic of hex_mux is 
+
+begin
+
+-- for the multiplexing of four hex input busses
+	with mux_select(1 downto 0) select
+	hex_out <= 
+				  (logic_in0 AND logic_in1) when "00";
+				  
+end mux_logic;
